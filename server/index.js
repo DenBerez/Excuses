@@ -1,9 +1,14 @@
 const express = require("express");
+const path = require('path');
 const pool = require("./database/index.js");
 const app = express();
+const PORT = 3000 || process.env.PORT;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.listen(3000);
+app.use(express.static(path.join(__dirname, '../dist')));
+app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
+});
 
 app.get('/products', async (req, res) => {
   try {
