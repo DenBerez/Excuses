@@ -1,3 +1,172 @@
-html {
+:root {
   margin: 0;
+  text-align: center;
+  /* background-color: #338F87; */
+  background-image: radial-gradient(circle, #338f87, #297d81, #296b77, #2d5969, #2f4858);
+  color: #AACF7E;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ELEMENTS */
+
+h1, h3 {
+  color: #2F4858;
+}
+
+h1 {
+  text-shadow: 1px 1px #AACF7E;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+::placeholder {
+  color: black;
+}
+
+button {
+  color: #2F4858;
+  background-color: #FEE680;
+  border-color: #2F4858;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 50%;
+  font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+  background-color: #2F4858;
+  color: #FEE680;
+  border-color: #FEE680;
+  cursor: pointer;
+}
+
+button:active {
+  color: #2F4858;
+  cursor: pointer;
+}
+
+/* IDs */
+
+/* #app {
+  display: flex;
+  flex-direction: column;
+} */
+
+#bottomCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#topField {
+  width: 61vh;
+  border-radius: 20%;
+  border: 3px solid #296B77;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-areas:
+    "flavor"
+    "choice";
+  grid-area: prompt;
+  margin: 0 auto;
+  box-shadow: 1px 1px #AACF7E;
+}
+
+#mainField {
+  width: 61vh;
+  border-radius: 20%;
+  border: 3px solid #296B77;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-areas:
+    "flavor"
+    "choice";
+  grid-area: prompt;
+  box-shadow: 1px 1px #AACF7E;
+}
+
+#flavor {
+  grid-area: flavor;
+  margin-top: 0;
+}
+
+#choices {
+  grid-area: choice;
+}
+
+#timeouts {
+  position: absolute;
+}
+
+#note {
+  width: 600px;
+  height: 400px;
+  margin-top: 10px;
+}
+
+#noteTextWhom {
+  color: black;
+  position: absolute;
+  left: 39%;
+  bottom: 50%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.75em;
+}
+
+#noteTextBody {
+  color: black;
+  position: absolute;
+  left: 42%;
+  bottom: 40%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.25em;
+}
+
+#noteTextEx {
+  max-width: 25ch;
+  color: black;
+  position: absolute;
+  left: 42%;
+  bottom: 30%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.25em;
+}
+
+#rod {
+  width: 30px;
+  position: absolute;
+  left: 38%;
+  bottom: 38%;
+  grid-area: rod;
+}
+
+#sig {
+  width: 200px;
+  position: absolute;
+  left: 55%;
+  bottom: 25%;
+  grid-area: sig;
+}
+
+#excuse {
+  grid-area: excuse;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CLASSES */
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 1s ease-out;
 }
