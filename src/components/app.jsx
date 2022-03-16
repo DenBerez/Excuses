@@ -6,44 +6,50 @@ import Quote from './quote';
 
 export default function App() {
   let [thisExcuse, setThisExcuse] = React.useState({});
+  let [isSaved, setIsSaved] = React.useState(false);
 
   let officeE = () => {
-    axios.get(`/excuse/office`)
+    axios.get(`/excuses/office`)
       .then(response => {
         const thisEx = response.data[0];
         setThisExcuse(thisEx);
+        setIsSaved(false);
       });
   }
 
   let familyE = () => {
-    axios.get(`/excuse/family`)
+    axios.get(`/excuses/family`)
       .then(response => {
         const thisEx = response.data[0];
         setThisExcuse(thisEx);
+        setIsSaved(false);
       });
   }
 
   let childrenE = () => {
-    axios.get(`/excuse/children`)
+    axios.get(`/excuses/children`)
       .then(response => {
         const thisEx = response.data[0];
         setThisExcuse(thisEx);
+        setIsSaved(false);
       });
   }
 
   let partyE = () => {
-    axios.get(`/excuse/party`)
+    axios.get(`/excuses/party`)
       .then(response => {
         const thisEx = response.data[0];
         setThisExcuse(thisEx);
+        setIsSaved(false);
       });
   }
 
   let collegeE = () => {
-    axios.get(`/excuse/college`)
+    axios.get(`/excuses/college`)
       .then(response => {
         const thisEx = response.data[0];
         setThisExcuse(thisEx);
+        setIsSaved(false);
       });
   }
 
@@ -85,8 +91,8 @@ export default function App() {
       </fieldset>
 
       <div id='bottomCont'>
-        <Previous />
-        <Excuse thisExcuse={thisExcuse} />
+        <Previous isSaved={isSaved} />
+        <Excuse thisExcuse={thisExcuse} isSaved={isSaved} setIsSaved={setIsSaved} />
         <Quote />
       </div>
 

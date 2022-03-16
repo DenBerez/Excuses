@@ -1,17 +1,31 @@
+import axios from 'axios';
 import React from 'react';
 import note from '../../dist/note2.png';
 import rod from '../../dist/rod.png';
 import sig from '../../dist/signature.png';
 
-export default function Excuse( {thisExcuse} ) {
+export default function Excuse( {thisExcuse, isSaved, setIsSaved} ) {
   let [name, setName] = React.useState("");
   let [purpose, setPurpose] = React.useState("");
   let typing = (e) => {
     if (e.target.id === 'nameInput') {
       setName(e.target.value);
+      setIsSaved(false);
     }
     if (e.target.id === 'occasionInput') {
       setPurpose(e.target.value);
+      setIsSaved(false);
+    }
+  }
+  let save = () => {
+    if (isSaved === false) {
+      axios.post('/excuses/previous', {
+        name: name,
+        purpose: purpose,
+        category: thisExcuse.category,
+        excuse: thisExcuse.excuse
+      })
+      .then(setIsSaved(true))
     }
   }
   return (
@@ -32,7 +46,7 @@ export default function Excuse( {thisExcuse} ) {
         <input id='occasionInput' type='text' placeholder='Occasion...' onChange={(e) => typing(e)}></input>. Basically:<br />
       </span>
       <span id='noteTextEx'>{thisExcuse.excuse}</span>
-      <button>Save</button>
+      <button onClick={() => save()}>Save</button>
     </div>
   )
 }

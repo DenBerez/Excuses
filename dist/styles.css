@@ -49,6 +49,11 @@ button:active {
   cursor: pointer;
 }
 
+hr {
+  border: 1px solid #2F4858;
+  width: 40%;
+}
+
 /* IDs */
 
 /* #app {
@@ -78,6 +83,20 @@ button:active {
 }
 
 #mainField {
+  width: 61vh;
+  border-radius: 20%;
+  border: 3px solid #296B77;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-areas:
+    "flavor"
+    "choice";
+  grid-area: prompt;
+  box-shadow: 1px 1px #AACF7E;
+}
+
+#pastField {
   width: 61vh;
   border-radius: 20%;
   border: 3px solid #296B77;

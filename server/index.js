@@ -11,31 +11,31 @@ app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
 
-app.get('/excuse/office', (req, res) => {
+app.get('/excuses/office', (req, res) => {
   request('https://excuser.herokuapp.com/v1/excuse/office', (err, resp, body) => {
     res.send(body);
   })
 });
 
-app.get('/excuse/family', (req, res) => {
+app.get('/excuses/family', (req, res) => {
   request('https://excuser.herokuapp.com/v1/excuse/family', (err, resp, body) => {
     res.send(body);
   })
 });
 
-app.get('/excuse/children', (req, res) => {
+app.get('/excuses/children', (req, res) => {
   request('https://excuser.herokuapp.com/v1/excuse/children', (err, resp, body) => {
     res.send(body);
   })
 });
 
-app.get('/excuse/party', (req, res) => {
+app.get('/excuses/party', (req, res) => {
   request('https://excuser.herokuapp.com/v1/excuse/party', (err, resp, body) => {
     res.send(body);
   })
 });
 
-app.get('/excuse/college', (req, res) => {
+app.get('/excuses/college', (req, res) => {
   request('https://excuser.herokuapp.com/v1/excuse/college', (err, resp, body) => {
     res.send(body);
   })
@@ -45,4 +45,26 @@ app.get('/quote', (req, res) => {
   request('https://zenquotes.io/api/random', (err, resp, body) => {
     res.send(body);
   })
+});
+
+app.get('/excuses/previous', async (req, res) => {
+  try {
+    const request = await pool.query(
+      `SELECT * FROM prevEx ORDER BY id DESC LIMIT 3;`
+    );
+    res.send(request.rows);
+  } catch (err) {
+    console.error(err);
+  };
+});
+
+app.post('/excuses/previous', async (req, res) => {
+  try {
+    const { name, purpose, category, excuse } = req.body;
+    const request = await pool.query(
+      `INSERT INTO prevEx (name, purpose, category, excuse) VALUES ($1, $2, $3, $4);`, [name, purpose, category, excuse]
+      );
+    } catch (err) {
+    console.error(err);
+  };
 });
