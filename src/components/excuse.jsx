@@ -4,10 +4,10 @@ import note from '../../dist/note2.png';
 import rod from '../../dist/rod.png';
 import sig from '../../dist/signature.png';
 
-export default function Excuse( {thisExcuse, isSaved, setIsSaved} ) {
-  let [name, setName] = React.useState("");
-  let [purpose, setPurpose] = React.useState("");
-  let typing = (e) => {
+export default function Excuse({ thisExcuse, isSaved, setIsSaved }) {
+  const [name, setName] = React.useState('');
+  const [purpose, setPurpose] = React.useState('');
+  const typing = (e) => {
     if (e.target.id === 'nameInput') {
       setName(e.target.value);
       setIsSaved(false);
@@ -16,37 +16,44 @@ export default function Excuse( {thisExcuse, isSaved, setIsSaved} ) {
       setPurpose(e.target.value);
       setIsSaved(false);
     }
-  }
-  let save = () => {
+  };
+  const save = () => {
     if (isSaved === false) {
       axios.post('/excuses/previous', {
-        name: name,
-        purpose: purpose,
+        name,
+        purpose,
         category: thisExcuse.category,
-        excuse: thisExcuse.excuse
+        excuse: thisExcuse.excuse,
       })
-      .then(setIsSaved(true))
+        .then(setIsSaved(true));
     }
-  }
+  };
   return (
-    <div id='excuse' className='hidden'>
-      <div id='timeouts' className='hidden'>
+    <div id="excuse" className="hidden">
+      <div id="timeouts" className="hidden">
         {Object.keys(thisExcuse).length !== 0
-        && setTimeout(() => {document.getElementById('excuse').className = ('visible')}, 500)}
+        && setTimeout(() => { document.getElementById('excuse').className = ('visible'); }, 500)}
       </div>
-      <img id='note' src={note}></img>
-      <img id='rod' src={rod}></img>
-      <img id='sig' src={sig}></img>
-      <span id='noteTextWhom'>
+      <img id="note" src={note} />
+      <img id="rod" src={rod} />
+      <img id="sig" src={sig} />
+      <span id="noteTextWhom">
         To whom it may concern,
       </span>
-      <span id='noteTextBody'>
-        I, <input id='nameInput' type='text' placeholder='Name...' onChange={(e) => typing(e)}></input>, am deeply sorry<br/>
-        for not being able to make it to<br />
-        <input id='occasionInput' type='text' placeholder='Occasion...' onChange={(e) => typing(e)}></input>. Basically:<br />
+      <span id="noteTextBody">
+        I,
+        {' '}
+        <input id="nameInput" type="text" placeholder="Name..." onChange={(e) => typing(e)} />
+        , am deeply sorry
+        <br />
+        for not being able to make it to
+        <br />
+        <input id="occasionInput" type="text" placeholder="Occasion..." onChange={(e) => typing(e)} />
+        . Basically:
+        <br />
       </span>
-      <span id='noteTextEx'>{thisExcuse.excuse}</span>
+      <span id="noteTextEx"><b>{thisExcuse.excuse}</b></span>
       <button onClick={() => save()}>Save</button>
     </div>
-  )
+  );
 }

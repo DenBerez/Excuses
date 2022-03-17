@@ -9,22 +9,27 @@
 
 /* ELEMENTS */
 
-h1, h3 {
+h3 {
   color: #2F4858;
+  font-size: 1.5em;
 }
 
 h1 {
-  text-shadow: 1px 1px #AACF7E;
+  color: #FEE680;
+  text-shadow: 2px 2px #2F4858;
 }
 
 input {
   border: none;
   border-bottom: 1px solid black;
   background: none;
+  text-align: center;
+  max-width: 200px;
+  margin: 0 auto;
 }
 
 ::placeholder {
-  color: black;
+  color: #2F4858;
 }
 
 button {
@@ -32,9 +37,10 @@ button {
   background-color: #FEE680;
   border-color: #2F4858;
   padding: 15px;
-  margin: 5px;
+  margin: 5px auto;
   border-radius: 50%;
   font-family: 'Poppins', sans-serif;
+  max-width: fit-content;
 }
 
 button:hover {
@@ -51,7 +57,8 @@ button:active {
 
 hr {
   border: 1px solid #2F4858;
-  width: 40%;
+  width: 100px;
+  box-shadow: 1px 1px #AACF7E;
 }
 
 /* IDs */
@@ -60,6 +67,11 @@ hr {
   display: flex;
   flex-direction: column;
 } */
+
+#inputSearch {
+  border-color: #AACF7E;
+  color: #AACF7E;
+}
 
 #bottomCont {
   display: flex;
@@ -94,6 +106,7 @@ hr {
     "choice";
   grid-area: prompt;
   box-shadow: 1px 1px #AACF7E;
+  margin-top: -110px;
 }
 
 #pastField {
@@ -108,6 +121,16 @@ hr {
     "choice";
   grid-area: prompt;
   box-shadow: 1px 1px #AACF7E;
+  margin-top: -110px;
+}
+
+#punchline {
+  color: #2F4858;
+  background-color: #2F4858;
+}
+
+#punchline:hover {
+  color: #FEE680;
 }
 
 #flavor {
