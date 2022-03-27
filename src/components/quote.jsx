@@ -40,7 +40,7 @@ export default function Quote() {
             {thisQuote.a}
           </h3>
         </span>
-        <button onClick={() => newQuote()}>New Quote</button>
+        <button type="button" onClick={() => newQuote()}>New Quote</button>
         <hr />
         <br />
         {thisJoke.joke ? (
@@ -54,7 +54,7 @@ export default function Quote() {
             </div>
           )}
         <br />
-        <button onClick={() => newJoke()}>New Joke</button>
+        <button type="button" onClick={() => newJoke()}>New Joke</button>
       </fieldset>
     </div>
   );

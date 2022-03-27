@@ -1,10 +1,30 @@
 const express = require('express');
 const path = require('path');
 const request = require('request');
-const pool = require('./database/index.js');
+const { Pool } = require('pg');
+// const pool = require('./database/index');
+require('dotenv').config();
+
+const localConnection = {
+  user: process.env.DB_HOST,
+  host: process.env.DB_USER,
+  database: process.env.DB_PASS,
+  password: process.env.DB_NAME,
+};
+
+const herokuConnection = {
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+};
+
+const pool = new Pool(
+  process.env.DATABASE_URL
+    ? herokuConnection
+    : localConnection,
+);
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../dist')));
