@@ -52,7 +52,7 @@ export default function Excuse({ thisExcuse, isSaved, setIsSaved }) {
         . Basically:
         <br />
       </span>
-      <span id="noteTextEx"><b>{thisExcuse.excuse}</b></span>
+      <span id="noteTextEx"><b>{thisExcuse.excuse || 'The Excuser API is currently down :('}</b></span>
       <button onClick={() => save()}>Save</button>
     </div>
   );
