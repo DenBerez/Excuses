@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DenBerez/mvp.git"
+    "url": "git+https://github.com/DenBerez/Excuses.git"
   },
   "author": "Dennis Berezin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DenBerez/mvp/issues"
+    "url": "https://github.com/DenBerez/Excuses/issues"
   },
-  "homepage": "https://github.com/DenBerez/mvp#readme",
+  "homepage": "https://github.com/DenBerez/Excuses#readme",
   "dependencies": {
     "axios": "^0.26.1",
     "babel-loader": "^8.2.3",
